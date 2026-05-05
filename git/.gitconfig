@@ -1,0 +1,15 @@
+[user]
+  name = Otavio Augusto
+  email = tavioalves@gmail.com
+
+[core]
+  editor = code --wait
+
+[init]
+  defaultBranch = main
+
+[alias]
+  co = checkout
+  br = branch
+  ci = commit
+  st = status
