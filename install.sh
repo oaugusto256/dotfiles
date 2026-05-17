@@ -91,7 +91,11 @@ fi
 # =====================================
 # ZINIT
 # =====================================
-if [ ! -d "$HOME/.zinit" ]; then
+if [ ! -f "$HOME/.zinit/zinit.zsh" ]; then
+  if [ -d "$HOME/.zinit" ]; then
+    warn "Stale Zinit install detected. Re-cloning..."
+    rm -rf "$HOME/.zinit"
+  fi
   log "Installing Zinit..."
   git clone https://github.com/zdharma-continuum/zinit ~/.zinit
 else
