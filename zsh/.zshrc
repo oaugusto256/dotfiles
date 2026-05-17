@@ -4,13 +4,17 @@
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 
 # =====================================
-# LOAD ZI (ZINIT)
+# FNM (Node)
 # =====================================
-if [[ -f "$HOME/.zinit/zi.zsh" ]]; then
-  source "$HOME/.zinit/zi.zsh"
+eval "$(fnm env --use-on-cd)"
+
+# =====================================
+# LOAD ZINIT
+# =====================================
+if [[ -f "$HOME/.zinit/zinit.zsh" ]]; then
+  source "$HOME/.zinit/zinit.zsh"
 else
-  echo "Zi not installed. Run:"
-  echo "git clone https://github.com/zdharma/zinit ~/.zinit"
+  echo "[warn] Zinit not installed. Run: git clone https://github.com/zdharma-continuum/zinit ~/.zinit"
   return
 fi
 
@@ -23,7 +27,7 @@ compinit
 # =====================================
 # PLUGINS
 # =====================================
-zi light zdharma/fast-syntax-highlighting
+zi light zdharma-continuum/fast-syntax-highlighting
 zi light zsh-users/zsh-autosuggestions
 zi light zsh-users/zsh-completions
 
@@ -45,39 +49,8 @@ SPACESHIP_PROMPT_ORDER=(
 SPACESHIP_USER_SHOW=always
 SPACESHIP_DIR_TRUNC=3
 SPACESHIP_PROMPT_ADD_NEWLINE=false
-
 SPACESHIP_CHAR_SYMBOL="❯"
 SPACESHIP_CHAR_SUFFIX=" "
-
-# =====================================
-# FZF (fuzzy finder)
-# =====================================
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# =====================================
-# ZOXIDE (smart cd)
-# =====================================
-eval "$(zoxide init zsh)"
-alias cd="z"
-
-# =====================================
-# EZA (better ls)
-# =====================================
-alias ls="eza --icons"
-alias ll="eza -lah --icons --git"
-alias tree="eza --tree --level=2 --icons"
-
-# =====================================
-# NVM (Node)
-# =====================================
-export NVM_DIR="$HOME/.nvm"
-[[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
-
-# =====================================
-# SDKMAN
-# =====================================
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
 # =====================================
 # HISTORY
@@ -96,6 +69,12 @@ bindkey '^[[B' history-search-forward
 # =====================================
 # ALIASES
 # =====================================
+alias ls="eza --icons"
+alias ll="eza -lah --icons --git"
+alias tree="eza --tree --level=2 --icons"
+alias cat="bat"
+alias grep="rg"
+
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -109,18 +88,12 @@ alias gcb="git checkout -b"
 
 alias reload="source ~/.zshrc"
 
-eval "$(fnm env)"
-
-# aliases úteis
-alias ls="eza --icons"
-alias cat="bat"
-alias grep="rg"
-
-# navegação inteligente
+# =====================================
+# TOOLS
+# =====================================
 eval "$(zoxide init zsh)"
+alias cd="z"
 
-# fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(direnv hook zsh)"
-
