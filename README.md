@@ -78,6 +78,8 @@ dotfiles/
 │   └── .zshrc
 ├── git/
 │   └── .gitconfig
+├── ssh/
+│   └── config
 ├── install.sh
 └── README.md
 ```
@@ -108,6 +110,7 @@ Managed automatically by `install.sh`, relative to wherever the repo is cloned:
 
 - `~/.zshrc`
 - `~/.gitconfig`
+- `~/.ssh/config`
 
 ---
 

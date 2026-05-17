@@ -103,12 +103,16 @@ fi
 # =====================================
 log "Linking dotfiles..."
 
+mkdir -p ~/.ssh
 ln -sf "$DOTFILES_DIR/zsh/.zshrc" ~/.zshrc
 ln -sf "$DOTFILES_DIR/git/.gitconfig" ~/.gitconfig
+ln -sf "$DOTFILES_DIR/ssh/config" ~/.ssh/config
+chmod 600 "$DOTFILES_DIR/ssh/config"
 
 log "Symlinks created:"
 log "  ~/.zshrc -> $DOTFILES_DIR/zsh/.zshrc"
 log "  ~/.gitconfig -> $DOTFILES_DIR/git/.gitconfig"
+log "  ~/.ssh/config -> $DOTFILES_DIR/ssh/config"
 
 # =====================================
 # ORBSTACK (Docker)
